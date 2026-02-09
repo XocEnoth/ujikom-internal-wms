@@ -13,8 +13,6 @@ import {
     datePickersCustomizations,
     treeViewCustomizations,
 } from "../../theme/customizations";
-import { useEffect, useState } from "react";
-import getUserCredentials from "../../actions/user";
 
 const xThemeComponents = {
     ...chartsCustomizations,
@@ -24,20 +22,11 @@ const xThemeComponents = {
 };
 
 export default function Dashboard(props) {
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        async function fetchData() {
-            const response = await getUserCredentials();
-            setData(response?.data?.users?.[0]);
-        }
-        fetchData();
-    }, []);
-
     return (
         <AppTheme {...props} themeComponents={xThemeComponents}>
             <CssBaseline enableColorScheme />
             <Box sx={{ display: "flex" }}>
-                <SideMenu dataUser={data} />
+                <SideMenu />
                 <AppNavbar />
                 {/* Main content */}
                 <Box

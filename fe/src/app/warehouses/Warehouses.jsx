@@ -13,8 +13,7 @@ import {
     datePickersCustomizations,
     treeViewCustomizations,
 } from "../../theme/customizations";
-import { useState, useEffect } from "react";
-import getUserCredentials from "../../actions/user";
+
 const xThemeComponents = {
     ...chartsCustomizations,
     ...dataGridCustomizations,
@@ -23,19 +22,11 @@ const xThemeComponents = {
 };
 
 export default function Warehouses(props) {
-    const [data, setData] = useState([]);
-    useEffect(() => {
-        async function fetchData() {
-            const response = await getUserCredentials();
-            setData(response?.data?.users?.[0]);
-        }
-        fetchData();
-    }, []);
     return (
         <AppTheme {...props} themeComponents={xThemeComponents}>
             <CssBaseline enableColorScheme />
             <Box sx={{ display: "flex" }}>
-                <SideMenu dataUser={data} />
+                <SideMenu />
                 <AppNavbar />
                 {/* Main content */}
                 <Box

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { styled } from "@mui/material/styles";
 import Avatar from "@mui/material/Avatar";
 import MuiDrawer, { drawerClasses } from "@mui/material/Drawer";
@@ -8,6 +9,7 @@ import Typography from "@mui/material/Typography";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemText from "@mui/material/ListItemText";
 import { NavLink } from "react-router";
+import getUserCredentials from "../actions/user";
 import MenuContent from "./MenuContent";
 import OptionsMenu from "./OptionsMenu";
 
@@ -24,7 +26,15 @@ const Drawer = styled(MuiDrawer)({
     },
 });
 
-export default function SideMenu({ dataUser }) {
+export default function SideMenu() {
+    const [dataUser, setDataUser] = useState([]);
+    useEffect(() => {
+        async function fetchData() {
+            const response = await getUserCredentials();
+            setDataUser(response?.data?.users?.[0]);
+        }
+        fetchData();
+    }, []);
     return (
         <Drawer
             variant="permanent"

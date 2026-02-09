@@ -413,9 +413,9 @@ export default function WarehouseTab({ data }) {
                                                                                   : "#cfd8dc",
                                                                         color:
                                                                             shelve?.status ===
-                                                                            "partial"
-                                                                                ? "#000000"
-                                                                                : "#FFFFFF",
+                                                                            "full"
+                                                                                ? "#FFFFFF"
+                                                                                : "#000000",
                                                                         aspectRatio:
                                                                             "1 / 1",
                                                                         borderRadius: 2.3,

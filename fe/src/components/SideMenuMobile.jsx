@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Avatar from "@mui/material/Avatar";
 import PropTypes from "prop-types";
 import Button from "@mui/material/Button";
@@ -6,16 +7,22 @@ import Drawer, { drawerClasses } from "@mui/material/Drawer";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import LogoutRoundedIcon from "@mui/icons-material/LogoutRounded";
-import { useState, useEffect } from "react";
 import getUserCredentials from "../actions/user";
 import MenuContent from "./MenuContent";
+import logout from "../actions/logout";
 
 function SideMenuMobile({ open, toggleDrawer }) {
-    const [data, setData] = useState([]);
+    const [dataUser, setDataUser] = useState([]);
+
+    const handleLogout = async () => {
+        await logout();
+        window.location.reload();
+    };
+
     useEffect(() => {
         async function fetchData() {
             const response = await getUserCredentials();
-            setData(response?.data?.users?.[0]);
+            setDataUser(response?.data?.users?.[0]);
         }
         fetchData();
     }, []);
@@ -49,7 +56,7 @@ function SideMenuMobile({ open, toggleDrawer }) {
                             sx={{ width: 36, height: 36 }}
                         />
                         <Typography component="p" variant="h6">
-                            {data?.username}
+                            {dataUser?.username}
                         </Typography>
                     </Stack>
                 </Stack>
@@ -63,6 +70,7 @@ function SideMenuMobile({ open, toggleDrawer }) {
                         variant="outlined"
                         fullWidth
                         startIcon={<LogoutRoundedIcon />}
+                        onClick={handleLogout}
                     >
                         Logout
                     </Button>

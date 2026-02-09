@@ -6,8 +6,6 @@ import UnProtectedRoute from "./lib/UnProtectedRoute.jsx";
 import Index from "./app/Index.jsx";
 import Dashboard from "./app/dashboard/Dashboard.jsx";
 import Warehouses from "./app/warehouses/Warehouses.jsx";
-import Orders from "./app/orders/Orders.jsx";
-import Shipments from "./app/shipments/Shipments.jsx";
 
 createRoot(document.getElementById("root")).render(
     <BrowserRouter>
@@ -33,22 +31,6 @@ createRoot(document.getElementById("root")).render(
                 element={
                     <ProtectedRoute>
                         <Warehouses />
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path="/orders"
-                element={
-                    <ProtectedRoute>
-                        <Orders />
-                    </ProtectedRoute>
-                }
-            />
-            <Route
-                path="/shipments"
-                element={
-                    <ProtectedRoute>
-                        <Shipments />
                     </ProtectedRoute>
                 }
             />

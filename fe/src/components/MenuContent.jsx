@@ -6,18 +6,12 @@ import ListItemText from "@mui/material/ListItemText";
 import Stack from "@mui/material/Stack";
 import GridViewIcon from "@mui/icons-material/GridView";
 import WarehouseIcon from "@mui/icons-material/Warehouse";
-// import InventoryIcon from "@mui/icons-material/Inventory";
-import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import { NavLink, useLocation } from "react-router";
 
 const mainListItems = [
     { text: "Dashboard", icon: <GridViewIcon />, path: "/dashboard" },
     { text: "Warehouses", icon: <WarehouseIcon />, path: "/warehouses" },
-    { text: "Orders", icon: <ShoppingCartIcon />, path: "/orders" },
-    { text: "Shipments", icon: <LocalShippingIcon />, path: "/shipments" },
-    // { text: "Inventory", icon: <InventoryIcon />, path: "/inventory" },
 ];
 
 const secondaryListItems = [

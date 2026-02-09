@@ -11,3 +11,14 @@ export async function getWarehouseData() {
         return error.response;
     }
 }
+
+export async function deleteCategory(id) {
+    try {
+        const response = await axios.delete(
+            `${config.API_BASE_URL}/warehouse/deleteCategory/${id}`,
+        );
+        return response.data;
+    } catch (error) {
+        return error.response;
+    }
+}

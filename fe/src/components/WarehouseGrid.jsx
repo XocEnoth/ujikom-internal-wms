@@ -7,10 +7,12 @@ import { useEffect, useState } from "react";
 
 export default function WarehouseGrid() {
     const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
     useEffect(() => {
         async function fetchData() {
             const response = await getWarehouseData();
             setData(response);
+            setLoading(false);
         }
         fetchData();
     }, []);
@@ -21,7 +23,17 @@ export default function WarehouseGrid() {
             <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
                 Warehouse Overview
             </Typography>
-            <WarehouseTab data={data} />
+            {loading ? (
+                <Typography component="p" variant="body1">
+                    Loading...
+                </Typography>
+            ) : data?.warehouses?.length > 0 ? (
+                <WarehouseTab data={data} />
+            ) : (
+                <Typography component="p" variant="body1">
+                    No data available.
+                </Typography>
+            )}
             <Copyright sx={{ my: 4 }} />
         </Box>
     );

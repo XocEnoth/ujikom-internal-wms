@@ -77,7 +77,7 @@ export default function Index() {
         e.preventDefault();
         const response = await signin(username, password);
         if (response?.status === 200) {
-            navigate("/dashboard");
+            navigate("/warehouses");
         } else {
             setSnackbarOpen(true);
             setSnackbarMessage(response?.data?.message);

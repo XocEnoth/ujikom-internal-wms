@@ -373,7 +373,13 @@ export default function WarehouseTab({ data }) {
                                                             component="h3"
                                                             variant="subtitle2"
                                                         >
-                                                            {category?.name}
+                                                            {category?.name
+                                                                ?.length > 15
+                                                                ? `${category.name.substring(
+                                                                      0,
+                                                                      15,
+                                                                  )}...`
+                                                                : category?.name}
                                                         </Typography>
                                                         <Typography
                                                             component="h3"
@@ -397,22 +403,22 @@ export default function WarehouseTab({ data }) {
                                                     </Box>
                                                     <Grid container spacing={1}>
                                                         {category?.shelves?.map(
-                                                            (shelve, index) => (
+                                                            (shelf, index) => (
                                                                 <Grid
                                                                     size={{
                                                                         xs: 6,
                                                                     }}
                                                                     sx={{
                                                                         backgroundColor:
-                                                                            shelve?.status ===
+                                                                            shelf?.status ===
                                                                             "full"
                                                                                 ? "#d50000"
-                                                                                : shelve?.status ===
+                                                                                : shelf?.status ===
                                                                                     "partial"
                                                                                   ? "#ff9800"
                                                                                   : "#cfd8dc",
                                                                         color:
-                                                                            shelve?.status ===
+                                                                            shelf?.status ===
                                                                             "full"
                                                                                 ? "#FFFFFF"
                                                                                 : "#000000",
@@ -428,9 +434,7 @@ export default function WarehouseTab({ data }) {
                                                                     }}
                                                                     key={index}
                                                                 >
-                                                                    {
-                                                                        shelve.name
-                                                                    }
+                                                                    {shelf.name}
                                                                 </Grid>
                                                             ),
                                                         )}

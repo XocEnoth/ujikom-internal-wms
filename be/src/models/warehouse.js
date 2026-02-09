@@ -9,10 +9,10 @@ export const getDataWarehouse = async (req, res) => {
                 categories.id AS category_id,
                 categories.code AS category_code,
                 categories.name AS category_name,
-                categories.total_shelves AS category_total_shelve,
-                shelves.id AS shelves_id,
-                shelves.shelve_name AS shelves_name,
-                shelves.status AS shelves_status
+                categories.total_shelves AS category_total_shelves,
+                shelves.id AS shelf_id,
+                shelves.shelf_name AS shelf_name,
+                shelves.status AS shelf_status
             FROM
                 warehouses
             INNER JOIN
@@ -52,21 +52,28 @@ export const getDataWarehouse = async (req, res) => {
                     id: row.category_id,
                     code: row.category_code,
                     name: row.category_name,
-                    total_shelves: row.category_total_shelve,
+                    total_shelves: row.category_total_shelves,
                     shelves: [],
                 };
             }
 
             warehouse.categories[row.category_id].shelves.push({
-                id: row.shelves_id,
-                name: row.shelves_name,
-                status: row.shelves_status,
+                id: row.shelf_id,
+                name: row.shelf_name,
+                status: row.shelf_status,
             });
         }
 
         const warehouses = Object.values(warehousesMap).map((w) => ({
             ...w,
-            categories: Object.values(w.categories),
+            categories: Object.values(w.categories).map((c) => ({
+                ...c,
+                shelves: c.shelves.sort((a, b) => {
+                    const numA = parseInt(a.name.match(/\d+$/)?.[0] || 0, 10);
+                    const numB = parseInt(b.name.match(/\d+$/)?.[0] || 0, 10);
+                    return numA - numB;
+                }),
+            })),
         }));
 
         return res.status(200).json({ warehouses });

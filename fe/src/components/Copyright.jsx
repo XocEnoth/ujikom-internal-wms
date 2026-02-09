@@ -18,7 +18,9 @@ export default function Copyright(props) {
             {"Copyright © "}
             {`${new Date().getFullYear()} `}
             <MUILink color="inherit" component="span">
-                <NavLink to={"/dashboard"}>Warehouse Management System</NavLink>
+                <NavLink to={"/warehouses"}>
+                    Warehouse Management System
+                </NavLink>
             </MUILink>
             {". All rights reserved."}
         </Typography>

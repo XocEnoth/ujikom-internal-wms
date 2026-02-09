@@ -53,7 +53,7 @@ export default function SideMenu() {
                 }}
             >
                 <NavLink
-                    to="/dashboard"
+                    to="/warehouses"
                     className="w-full flex items-center hover:bg-blue-500/20 p-3"
                 >
                     <ListItemAvatar>

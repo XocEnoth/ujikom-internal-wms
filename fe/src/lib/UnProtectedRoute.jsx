@@ -33,7 +33,7 @@ export default function UnProtectedRoute({ children }) {
     }
 
     if (isAuthenticated) {
-        return <Navigate to="/dashboard" />;
+        return <Navigate to="/warehouses" />;
     }
 
     return children;

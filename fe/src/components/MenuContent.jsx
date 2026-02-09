@@ -4,13 +4,11 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Stack from "@mui/material/Stack";
-import GridViewIcon from "@mui/icons-material/GridView";
 import WarehouseIcon from "@mui/icons-material/Warehouse";
 import SettingsRoundedIcon from "@mui/icons-material/SettingsRounded";
 import { NavLink, useLocation } from "react-router";
 
 const mainListItems = [
-    { text: "Dashboard", icon: <GridViewIcon />, path: "/dashboard" },
     { text: "Warehouses", icon: <WarehouseIcon />, path: "/warehouses" },
 ];
 

@@ -4,7 +4,6 @@ import "./index.css";
 import ProtectedRoute from "./lib/ProtectedRoute.jsx";
 import UnProtectedRoute from "./lib/UnProtectedRoute.jsx";
 import Index from "./app/Index.jsx";
-import Dashboard from "./app/dashboard/Dashboard.jsx";
 import Warehouses from "./app/warehouses/Warehouses.jsx";
 
 createRoot(document.getElementById("root")).render(
@@ -16,14 +15,6 @@ createRoot(document.getElementById("root")).render(
                     <UnProtectedRoute>
                         <Index />
                     </UnProtectedRoute>
-                }
-            />
-            <Route
-                path="/dashboard"
-                element={
-                    <ProtectedRoute>
-                        <Dashboard />
-                    </ProtectedRoute>
                 }
             />
             <Route

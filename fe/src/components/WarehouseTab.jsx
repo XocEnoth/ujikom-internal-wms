@@ -5,6 +5,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
+import VisibilityIcon from "@mui/icons-material/Visibility";
 import AddIcon from "@mui/icons-material/Add";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
@@ -327,7 +328,9 @@ export default function WarehouseTab({ data }) {
                                                     <Button
                                                         variant="outlined"
                                                         color="inherit"
-                                                        startIcon={<AddIcon />}
+                                                        startIcon={
+                                                            <VisibilityIcon />
+                                                        }
                                                         sx={{
                                                             maxHeight: "31.5px",
                                                         }}

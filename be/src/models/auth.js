@@ -125,6 +125,8 @@ export const logout = async (req, res) => {
             WHERE session_id = ?;`,
             [hash_sid],
         );
+
+        res.clearCookie("sid");
         return res.status(200).json({ success: true });
     } catch (error) {
         console.error("Error in logout :\n\n", error);
